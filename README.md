@@ -1,8 +1,8 @@
-# Car Charging 
+# Watt Budget 
 
-Dans ce projet, je souhaite créer une interface pour suivre le prix de revient lors de la recharge d'un véhicule éléctrique.
+Dans ce projet, je souhaite créer une interface de calcul du prix de revient de la charge pour voitures électriques
 
 ## Stack
 
 API ( NodeJS / Express / BetterAuth )\
-Interface graphique ( React / Typescript / Astro )
+Interface graphique ( React / Typescript / Astro / ShadCN )
