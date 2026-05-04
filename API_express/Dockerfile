@@ -5,13 +5,12 @@ FROM node:current-alpine
 WORKDIR /usr/src/app
 
 # Copie les fichiers package.json et package-lock.json
-COPY package*.json ./
+COPY package*.json .
 
 # Copie le reste du code
 COPY . .
 
 # Installe les dépendances
-RUN npm update -g npm
 RUN npm install -g pnpm
 RUN pnpm install
 

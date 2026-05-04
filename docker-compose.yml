@@ -1,57 +1,37 @@
 services:
-  mongodb:
-    container_name: mongodb
-    image: docker.io/library/mongo
-    ports:
-      - 27017:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: api
-      MONGO_INITDB_ROOT_PASSWORD: N6QmF7kSNGLq
-    volumes:
-      - mongo_db_data:/data/db
-    networks:
-      - car-charging-network
-  api:
-      container_name: api
-      build: ./API
-      image: api
-      working_dir: /usr/src/app      
-      volumes:
-        - API:/usr/src/app
-      ports:
-        - 5000:5000
-      command: npm run dev
-      depends_on:
-        - mongodb
-      networks:
-        - car-charging-network
-  front:
-      container_name: front
-      build: ./FRONT
-      image: front
-      depends_on:
-        - api
-      volumes:
-        - ./FRONT:/usr/src/app
-        - astro_node_modules:/app/node_modules
-      ports:
-        - 4321:4321
-      environment:
-        - PUBLIC_API_URL=http://localhost:5000
-      command: npm run dev
-      networks:
-        - car-charging-network 
+    postgres:
+        container_name: postgres
+        image: docker.io/library/postgres
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: api
+            POSTGRES_PASSWORD: N6QmF7kSNGLq
+            POSTGRES_DB: wattbudget
+        volumes:
+            - postgres_data:/var/lib/postgresql
+        networks:
+            - wattbudget-network
+    nest-api:
+        build: ./api
+        container_name: nest-api
+        restart: always
+        env_file:
+            - ./api/.env
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./api:/usr/src/nest-api
+        command: npm run start:dev
+        depends_on:
+            - postgres
+        networks:
+            - wattbudget-network
+
 volumes:
-  mongo_db_data:
-    driver: local
-  API:
-  FRONT:
-  astro_node_modules:
+    postgres_data:
+        driver: local
 
 networks:
-  car-charging-network:
-    driver: bridge
-  
-  
-  #podman-compose down && podman rmi --all && podman-compose up -d --build --no-cache && podman-compose logs -f
- 
+    wattbudget-network:
+        driver: bridge
