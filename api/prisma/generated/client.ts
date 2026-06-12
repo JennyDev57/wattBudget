@@ -59,3 +59,8 @@ export type User_account = Prisma.User_accountModel
  * 
  */
 export type User_verification = Prisma.User_verificationModel
+/**
+ * Model Recharge
+ * 
+ */
+export type Recharge = Prisma.RechargeModel

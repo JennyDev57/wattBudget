@@ -54,7 +54,8 @@ export const ModelName = {
   User: 'User',
   User_sessions: 'User_sessions',
   User_account: 'User_account',
-  User_verification: 'User_verification'
+  User_verification: 'User_verification',
+  Recharge: 'Recharge'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -129,6 +130,19 @@ export const User_verificationScalarFieldEnum = {
 } as const
 
 export type User_verificationScalarFieldEnum = (typeof User_verificationScalarFieldEnum)[keyof typeof User_verificationScalarFieldEnum]
+
+
+export const RechargeScalarFieldEnum = {
+  id: 'id',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  fullHour: 'fullHour',
+  offPeakHour: 'offPeakHour',
+  totalCost: 'totalCost',
+  createdAt: 'createdAt'
+} as const
+
+export type RechargeScalarFieldEnum = (typeof RechargeScalarFieldEnum)[keyof typeof RechargeScalarFieldEnum]
 
 
 export const SortOrder = {

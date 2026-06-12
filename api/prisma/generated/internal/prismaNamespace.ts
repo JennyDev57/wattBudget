@@ -387,7 +387,8 @@ export const ModelName = {
   User: 'User',
   User_sessions: 'User_sessions',
   User_account: 'User_account',
-  User_verification: 'User_verification'
+  User_verification: 'User_verification',
+  Recharge: 'Recharge'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "user_sessions" | "user_account" | "user_verification"
+    modelProps: "user" | "user_sessions" | "user_account" | "user_verification" | "recharge"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +704,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Recharge: {
+      payload: Prisma.$RechargePayload<ExtArgs>
+      fields: Prisma.RechargeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RechargeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RechargeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>
+        }
+        findFirst: {
+          args: Prisma.RechargeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RechargeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>
+        }
+        findMany: {
+          args: Prisma.RechargeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>[]
+        }
+        create: {
+          args: Prisma.RechargeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>
+        }
+        createMany: {
+          args: Prisma.RechargeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RechargeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>[]
+        }
+        delete: {
+          args: Prisma.RechargeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>
+        }
+        update: {
+          args: Prisma.RechargeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>
+        }
+        deleteMany: {
+          args: Prisma.RechargeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RechargeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RechargeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>[]
+        }
+        upsert: {
+          args: Prisma.RechargeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RechargePayload>
+        }
+        aggregate: {
+          args: Prisma.RechargeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRecharge>
+        }
+        groupBy: {
+          args: Prisma.RechargeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RechargeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RechargeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RechargeCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -800,6 +875,19 @@ export const User_verificationScalarFieldEnum = {
 export type User_verificationScalarFieldEnum = (typeof User_verificationScalarFieldEnum)[keyof typeof User_verificationScalarFieldEnum]
 
 
+export const RechargeScalarFieldEnum = {
+  id: 'id',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  fullHour: 'fullHour',
+  offPeakHour: 'offPeakHour',
+  totalCost: 'totalCost',
+  createdAt: 'createdAt'
+} as const
+
+export type RechargeScalarFieldEnum = (typeof RechargeScalarFieldEnum)[keyof typeof RechargeScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -876,6 +964,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**
@@ -992,6 +1094,7 @@ export type GlobalOmitConfig = {
   user_sessions?: Prisma.User_sessionsOmit
   user_account?: Prisma.User_accountOmit
   user_verification?: Prisma.User_verificationOmit
+  recharge?: Prisma.RechargeOmit
 }
 
 /* Types for Logging */

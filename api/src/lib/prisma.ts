@@ -1,8 +1,15 @@
+import 'dotenv/config';
 import { PrismaClient } from '../../prisma/generated/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 
+// const connectionString =
+//   process.env.DATABASE_PRISMA_URL ?? process.env.DATABASE_URL ?? '';
+
+const connectionString =
+  process.env.DATABASE_URL ?? process.env.DATABASE_PRISMA_URL;
+
 const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL!,
+  connectionString,
 });
 
 const globalForPrisma = global as unknown as {
