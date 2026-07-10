@@ -10,6 +10,7 @@ FRONT/package-lock.json
 FRONT/yarn.lock
 FRONT/pnpm-lock.yaml
 FRONT/pnpm-workspace.yaml
+FRONT/pnpm-store.yaml
 
 *.code-workspace
 mongo-create-init.js

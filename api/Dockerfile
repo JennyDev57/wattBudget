@@ -1,4 +1,4 @@
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 WORKDIR /usr/src/nest-api
 
 # Installer les dépendances de build

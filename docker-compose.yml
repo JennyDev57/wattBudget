@@ -28,9 +28,26 @@ services:
         networks:
             - wattbudget-network
 
+    front:
+        container_name: front
+        build: ./FRONT
+        image: front
+        depends_on:
+            - nest-api
+        volumes:
+            - ./FRONT:/usr/src/app
+            - astro_node_modules:/app/node_modules
+        ports:
+            - 4321:4321
+        environment:
+            - PUBLIC_API_URL=http://localhost:5000
+        networks:
+            - wattbudget-network
+
 volumes:
     postgres_data:
         driver: local
+    astro_node_modules:
 
 networks:
     wattbudget-network:

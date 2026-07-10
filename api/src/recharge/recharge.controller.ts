@@ -1,5 +1,6 @@
 import {
   Controller,
+  UseGuards,
   Get,
   Post,
   Body,
@@ -12,8 +13,10 @@ import {
   CreateRechargeRequestDto,
   UpdateRechargeRequestDto,
 } from './dto/recharge.dto';
+import { AuthGuard } from '@thallesp/nestjs-better-auth';
 
 @Controller('recharge')
+@UseGuards(AuthGuard)
 export class RechargeController {
   constructor(private readonly rechargeService: RechargeService) {}
 
