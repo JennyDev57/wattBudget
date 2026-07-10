@@ -1,32 +1,41 @@
-import { Logo } from "./logo";
-import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import { SignOutButton } from "./signout-button";
+import { Button } from "@/components/ui/button"
+import { navigate } from "astro:transitions/client";
 
-const Navbar = async (initialSession: string | any) => {
+const Navbar = (initialSession: string | any) => {
+
   return (
-    <div className="min-h-screen bg-muted">
-      <nav className="fixed top-6 inset-x-4 h-16 bg-background border dark:border-slate-700/70 max-w-screen-xl mx-auto rounded-full">
-        <div className="h-full flex items-center justify-between mx-auto px-4">
-          <Logo />
+    <header className="border-b bg-background">
+      <div className="container mx-auto flex h-16 items-center justify-between">
 
-          {/* Desktop Menu */}
-          <NavMenu className="hidden md:block" />
-
-          <div className="flex items-center gap-3">
-            
-            <SignOutButton initialSession={initialSession} />
-            
-            {/* <Button className="rounded-full">Get Started</Button> */}
-
-            {/* Mobile Menu */}
-            <div className="md:hidden">
-              <NavigationSheet />
-            </div>
-          </div>
+        <div className="font-bold text-xl">
+          WattBudget
         </div>
-      </nav>
-    </div>
+
+        <nav className="flex items-center gap-4">
+
+          <Button variant="ghost"
+            className="hover:bg-blue-100 hover:text-blue-700" onClick={() => navigate('/dashboard')}>
+            Dashboard
+          </Button>
+
+          <Button variant="ghost" onClick={() => navigate('/users')}>
+            Utilisateurs
+          </Button>
+
+          <Button variant="ghost" onClick={() => navigate('/settings')}>
+            Paramètres
+          </Button>
+
+          <SignOutButton initialSession={initialSession} />
+
+          {/* <NavigationSheet /> */}
+
+        </nav>
+
+      </div>
+    </header>
   );
 };
 

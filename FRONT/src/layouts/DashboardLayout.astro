@@ -1,0 +1,14 @@
+---
+import "../styles/global.css";
+
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/navbar/navbar";
+---
+
+<Layout>
+    <Navbar client:only="react" initialSession={ Astro.locals.user.id ?? null }/>
+    
+    <div class="container mx-auto p-6">
+      <slot />
+    </div>
+</Layout>
